@@ -17,6 +17,12 @@
 #ifndef __IOTC_BSP_RNG_H__
 #define __IOTC_BSP_RNG_H__
 
+#if defined(TLSLIB_WOLFSSL) /* WOLFSSL version of RNG implementation */
+#include <cyassl/ctaocrypt/memory.h>
+#include <cyassl/ctaocrypt/random.h>
+WC_RNG wolfcrypt_rng;
+#endif
+
 /**
  * @file iotc_bsp_rng.h
  * @brief Implement a random number generator (RNG).

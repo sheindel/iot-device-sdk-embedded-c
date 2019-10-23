@@ -82,11 +82,7 @@ void iotc_bsp_rng_shutdown() {
 
 #elif defined(TLSLIB_WOLFSSL) /* WOLFSSL version of RNG implementation */
 
-#include <cyassl/ctaocrypt/memory.h>
-#include <cyassl/ctaocrypt/random.h>
 #include <iotc_allocator.h>
-
-static WC_RNG wolfcrypt_rng;
 
 void iotc_bsp_rng_init() {
   srand(time(NULL));

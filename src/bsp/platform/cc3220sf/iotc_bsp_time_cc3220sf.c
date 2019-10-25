@@ -22,7 +22,7 @@
 #include <ti/sysbios/knl/Clock.h>
 
 Clock_Struct clk0Struct;
-void clockSecondTick( UArg arg0 );
+void clockSecondTickIotc( UArg arg0 );
 
 void iotc_bsp_time_init() { 
 
@@ -33,14 +33,14 @@ void iotc_bsp_time_init() {
     clkParams.startFlag = TRUE;
 
     /* Construct a periodic Clock Instance */
-    Clock_construct( &clk0Struct, ( Clock_FuncPtr )clockSecondTick, clkParams.period,
+    Clock_construct( &clk0Struct, ( Clock_FuncPtr )clockSecondTickIotc, clkParams.period,
                      &clkParams );
 
     iotc_bsp_time_sntp_init( NULL );
 }
 
-/* tracks uptime */
-void clockSecondTick( UArg arg0 )
+/* tracks uptimeIotc */
+void clockSecondTickIotc( UArg arg0 )
 {
     ++uptimeIotc;
 }

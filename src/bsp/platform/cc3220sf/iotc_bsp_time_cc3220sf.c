@@ -15,11 +15,11 @@
  */
 
 #include <iotc_bsp_time.h>
+#include <iotc_bsp_time_cc3220sf_sntp.h>
 
 #include <hw_types.h>
 #include <ti/sysbios/BIOS.h>
 #include <ti/sysbios/knl/Clock.h>
-#include "iotc_bsp_time_cc3220sf_sntp.h"
 
 Clock_Struct clk0Struct;
 void clockSecondTick( UArg arg0 );

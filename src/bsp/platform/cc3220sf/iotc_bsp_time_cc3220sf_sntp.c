@@ -169,6 +169,7 @@ static char* ntp_server_names[] = NTP_SERVER_NAMES;
 static int errno;
 
 static uint32_t start_time_ntp = 0;
+uint32_t uptime                = 0;
 
 #define NTP_SERVER_COUNT ( sizeof( ntp_server_names ) / sizeof( char* ) )
 

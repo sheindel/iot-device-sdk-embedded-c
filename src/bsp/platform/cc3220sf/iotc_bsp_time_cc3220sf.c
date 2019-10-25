@@ -24,7 +24,6 @@
 Clock_Struct clk0Struct;
 void clockSecondTick( UArg arg0 );
 
-
 void iotc_bsp_time_init() { 
 
     Clock_Params clkParams;
@@ -38,6 +37,12 @@ void iotc_bsp_time_init() {
                      &clkParams );
 
     iotc_bsp_time_sntp_init( NULL );
+}
+
+/* tracks uptime */
+void clockSecondTick( UArg arg0 )
+{
+    ++uptimeIotc;
 }
 
 iotc_time_t iotc_bsp_time_getcurrenttime_seconds() { 

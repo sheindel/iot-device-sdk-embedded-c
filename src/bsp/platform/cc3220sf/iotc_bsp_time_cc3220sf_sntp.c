@@ -169,8 +169,6 @@ static char* ntp_server_names[] = NTP_SERVER_NAMES;
 static int errno;
 
 static uint32_t start_time_ntp = 0;
-static // GN: duplicate smbol w/ lXively
-                                         uint32_t uptime                = 0;
 
 #define NTP_SERVER_COUNT ( sizeof( ntp_server_names ) / sizeof( char* ) )
 
@@ -392,7 +390,7 @@ void iotc_bsp_time_sntp_init( void* pvParameters )
 
         if ( t > 0 )
         {
-            start_time_ntp = ( t - uptime );
+            start_time_ntp = ( t - uptimeIotc );
             /* printf( "SNTP_G: %d, %s->0x%08X\n\r", iotc_bsp_time_sntp_getseconds_posix(),
                     ntp_server_names[ntp_server_index], server_addr ); */
 
@@ -404,7 +402,7 @@ void iotc_bsp_time_sntp_init( void* pvParameters )
         }
 
         ( void )sleep_ms;
-        /* printf( "SNTP_L: %d, UT %d\n\r", iotc_bsp_time_sntp_getseconds_posix(), uptime );
+        /* printf( "SNTP_L: %d, UT %d\n\r", iotc_bsp_time_sntp_getseconds_posix(), uptimeIotc );
          */
         break;
     }
@@ -416,7 +414,7 @@ ntp_time_t iotc_bsp_time_sntp_getseconds_ntp( void )
 
     if ( start_time_ntp > SECONDS_1900_TO_1970 )
     {
-        rval = start_time_ntp + uptime;
+        rval = start_time_ntp + uptimeIotc;
     }
 
     return rval;
@@ -427,7 +425,7 @@ posix_time_t iotc_bsp_time_sntp_getseconds_posix( void )
     posix_time_t rval = 0;
     if ( start_time_ntp > SECONDS_1900_TO_1970 )
     {
-        rval = ( posix_time_t )( start_time_ntp + uptime - SECONDS_1900_TO_1970 );
+        rval = ( posix_time_t )( start_time_ntp + uptimeIotc - SECONDS_1900_TO_1970 );
     }
 
     return rval;

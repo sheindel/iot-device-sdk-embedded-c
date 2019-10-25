@@ -50,6 +50,6 @@ iotc_bsp_time_sntp_getseconds_posix( void ); // Seconds since 1970/01/01 00:00:0
  */
 void iotc_bsp_time_sntp_init( void* pvParameters );
 
-//GN: extern uint32_t uptime;
+extern uint32_t uptimeIotc;
 
 #endif /* __XI_BSP_TIME_CC3200_SNTP_H__ */

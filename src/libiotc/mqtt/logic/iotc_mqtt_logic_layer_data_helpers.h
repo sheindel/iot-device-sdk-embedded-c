@@ -37,6 +37,11 @@ static inline int8_t cmp_topics(const union iotc_vector_selector_u* a,
   if (memcmp(ca->subscribe.topic, cb->data_ptr, cb->length) == 0) {
     return 0;
   }
+  char* token = strchr(ca->subscribe.topic, '#');
+  if ((token != NULL) &&
+      (memcmp(ca->subscribe.topic, cb->data_ptr, strlen(ca->subscribe.topic)-1) == 0)) {
+    return 0;
+  }
 
   return 1;
 }

@@ -20,7 +20,7 @@
 #if defined(TLSLIB_WOLFSSL) /* WOLFSSL version of RNG implementation */
 #include <cyassl/ctaocrypt/memory.h>
 #include <cyassl/ctaocrypt/random.h>
-WC_RNG wolfcrypt_rng;
+extern WC_RNG wolfcrypt_rng;
 #endif
 
 /**

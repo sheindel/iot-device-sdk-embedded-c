@@ -15,9 +15,10 @@
  */
 
 #include "iotc_bsp_crypto.h"
-#include "iotc_bsp_mem.h"
+#include "iotc_bsp_rng.h"
 #include "iotc_helpers.h"
 #include "iotc_macros.h"
+#include "iotc_allocator.h"
 
 #include "wolfssl/wolfcrypt/coding.h"
 #include "wolfssl/wolfcrypt/error-crypt.h"
@@ -25,8 +26,12 @@
 
 #include "wolfssl/ssl.h"
 #include "wolfssl/wolfcrypt/asn.h"
+#include "wolfssl/wolfcrypt/asn_public.h"
 #include "wolfssl/wolfcrypt/ecc.h"
 #include "wolfssl/wolfcrypt/logging.h"
+
+#include "wolfssl/wolfcrypt/memory.h"
+#include "wolfssl/wolfcrypt/random.h"
 
 #include <stdio.h>
 
@@ -123,8 +128,6 @@ iotc_bsp_crypto_state_t iotc_bsp_ecc(
     const iotc_crypto_key_data_t* private_key_data, uint8_t* dst_buf,
     size_t dst_buf_size, size_t* bytes_written, const uint8_t* src_buf,
     size_t src_buf_len) {
-  // reusing wolfcrypt_rng from BSP_RNG module
-  extern WC_RNG wolfcrypt_rng;
 
   if (NULL == private_key_data || NULL == dst_buf || NULL == bytes_written ||
       NULL == src_buf) {
@@ -201,4 +204,13 @@ err_handling:
   }
 
   return IOTC_BSP_CRYPTO_STATE_OK;
+}
+
+iotc_bsp_crypto_state_t iotc_bsp_ecc_keygen(unsigned char* output_key) {
+  ecc_key key;
+  int result = wc_ecc_init(&key);
+
+  wc_ecc_make_key(&wolfcrypt_rng, 32, &key); // initialize 32 byte ecc key
+#define FOURK_BUF 4096
+  int  derSz = wc_EccKeyToDer(&key, output_key, FOURK_BUF);
 }

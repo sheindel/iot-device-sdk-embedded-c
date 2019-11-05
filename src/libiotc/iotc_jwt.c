@@ -103,6 +103,7 @@ iotc_state_t iotc_create_iotcore_jwt(
   switch (private_key_data->crypto_key_union_type) {
     case IOTC_CRYPTO_KEY_UNION_TYPE_PEM:
       if (NULL == private_key_data->crypto_key_union.key_pem.key) {
+        // TODO generate key?
         return IOTC_NULL_KEY_DATA_ERROR;
       }
       break;

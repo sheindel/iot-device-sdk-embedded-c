@@ -144,6 +144,10 @@ iotc_bsp_crypto_state_t iotc_bsp_ecc(const iotc_crypto_key_data_t* private_key,
                                      const uint8_t* src_buf,
                                      size_t src_buf_size);
 
+
+iotc_bsp_crypto_state_t iotc_bsp_ecc_keygen(unsigned char* output_key);
+
+
 #ifdef __cplusplus
 }
 #endif

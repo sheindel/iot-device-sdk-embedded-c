@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-supported_wolfssl_version="v3.15.3-stable"
+supported_wolfssl_version="v3.15.7-stable"
 
 # Helper function to exit with error in a consistent manner.
 exit_with_error() {

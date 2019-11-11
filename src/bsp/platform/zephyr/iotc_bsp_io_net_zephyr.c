@@ -16,17 +16,17 @@
 
 #include <iotc_bsp_io_net.h>
 
+typedef int32_t ssize_t;
+
 #include <fcntl.h>
 #include <net/socket.h>
 #include <stdio.h>
 
 #include "iotc_macros.h"
-#include <errno.h>
 
-int* z_impl_z_errno(void) {
-  static int workaround_fake_errno_just_for_linkage = -1;
-  return &workaround_fake_errno_just_for_linkage;
-}
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #ifndef MAX
 #define MAX(a, b) (((a) > (b)) ? (a) : (b))
@@ -116,6 +116,7 @@ iotc_bsp_io_net_state_t iotc_bsp_io_net_write(iotc_bsp_socket_t iotc_socket,
     *out_written_count = 0;
 
     errval = errno;
+    errno = 0;
 
     if (EAGAIN == errval) {
       return IOTC_BSP_IO_NET_STATE_BUSY;
@@ -145,6 +146,7 @@ iotc_bsp_io_net_state_t iotc_bsp_io_net_read(iotc_bsp_socket_t iotc_socket,
     *out_read_count = 0;
 
     errval = errno;
+    errno = 0;
 
     if (EAGAIN == errval) {
       return IOTC_BSP_IO_NET_STATE_BUSY;
@@ -248,3 +250,6 @@ iotc_bsp_io_net_state_t iotc_bsp_io_net_select(
   return IOTC_BSP_IO_NET_STATE_ERROR;
 }
 
+#ifdef __cplusplus
+}
+#endif

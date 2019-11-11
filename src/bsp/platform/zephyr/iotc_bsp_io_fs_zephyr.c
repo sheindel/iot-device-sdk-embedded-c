@@ -22,10 +22,9 @@
 #include <assert.h>
 #include <errno.h>
 #include <iotc_fs_bsp_to_iotc_mapping.h>
-#include <string.h>
+#include <memory.h>
 #include <stdio.h>
 #include <sys/stat.h>
-#include <sys/types.h>
 #include <unistd.h>
 
 /* The size of the buffer to be used for reads. */
@@ -43,7 +42,7 @@ const size_t iotc_bsp_io_fs_buffer_size = 1024;
  * Database type of file handles and allocated memory chunks.
  */
 typedef struct iotc_bsp_io_fs_posix_file_handle_container_s {
-  int posix_fp;
+  FILE* posix_fp;
   uint8_t* memory_buffer;
   struct iotc_bsp_io_fs_posix_file_handle_container_s* __next;
 } iotc_bsp_io_fs_posix_file_handle_container_t;
@@ -66,6 +65,7 @@ iotc_bsp_io_fs_state_t iotc_bsp_io_fs_posix_errno_2_iotc_bsp_io_fs_state(
       ret = IOTC_BSP_IO_FS_RESOURCE_NOT_AVAILABLE;
       break;
     case ELOOP:
+    case EOVERFLOW:
       ret = IOTC_BSP_IO_FS_ERROR;
       break;
     case ENAMETOOLONG:
@@ -103,7 +103,7 @@ static iotc_bsp_io_fs_state_t iotc_bsp_io_fs_posix_stat_2_iotc_bsp_io_fs_stat(
  * @return 1 if list element is the one with the matching fp 0 otherwise
  */
 static uint8_t iotc_bsp_io_fs_posix_file_list_cnd(
-    iotc_bsp_io_fs_posix_file_handle_container_t* list_element, int fp) {
+    iotc_bsp_io_fs_posix_file_handle_container_t* list_element, FILE* fp) {
   assert(NULL != list_element);
   assert(NULL != fp);
 
@@ -154,12 +154,12 @@ iotc_bsp_io_fs_state_t iotc_bsp_io_fs_open(
   iotc_bsp_io_fs_posix_file_handle_container_t* new_entry = NULL;
   iotc_bsp_io_fs_state_t ret = IOTC_BSP_IO_FS_STATE_OK;
 
-  int fp = open(resource_name,
-                   (open_flags & IOTC_BSP_IO_FS_OPEN_READ) ? O_RDONLY : O_WRONLY);
+  FILE* fp = fopen(resource_name,
+                   (open_flags & IOTC_BSP_IO_FS_OPEN_READ) ? "rb" : "wb");
 
-  /* if error on open check the errno value */
+  /* if error on fopen check the errno value */
   IOTC_BSP_IO_FS_CHECK_CND(
-      fp <= 0, iotc_bsp_io_fs_posix_errno_2_iotc_bsp_io_fs_state(errno),
+      NULL == fp, iotc_bsp_io_fs_posix_errno_2_iotc_bsp_io_fs_state(errno),
       ret);
 
   /* allocate memory for the files database element */
@@ -183,8 +183,8 @@ iotc_bsp_io_fs_state_t iotc_bsp_io_fs_open(
   return ret;
 
 err_handling:
-  if (0 < fp) {
-    close(fp);
+  if (NULL != fp) {
+    fclose(fp);
   }
   iotc_bsp_mem_free(new_entry);
   *resource_handle_out = iotc_bsp_io_fs_init_resource_handle();
@@ -200,7 +200,7 @@ iotc_bsp_io_fs_state_t iotc_bsp_io_fs_read(
   }
 
   iotc_bsp_io_fs_state_t ret = IOTC_BSP_IO_FS_STATE_OK;
-  int fp = (int)resource_handle;
+  FILE* fp = (FILE*)resource_handle;
   int fop_ret = 0;
 
   iotc_bsp_io_fs_posix_file_handle_container_t* elem = NULL;
@@ -219,16 +219,16 @@ iotc_bsp_io_fs_state_t iotc_bsp_io_fs_read(
   }
 
   /* let's set an offset */
-  fop_ret = lseek(fp, offset, SEEK_SET);
+  fop_ret = fseek(fp, offset, SEEK_SET);
 
-  /* if error on lseek check errno */
+  /* if error on fseek check errno */
   IOTC_BSP_IO_FS_CHECK_CND(
       fop_ret != 0, iotc_bsp_io_fs_posix_errno_2_iotc_bsp_io_fs_state(errno),
       ret);
 
-  /* use the read to read the file chunk */
+  /* use the fread to read the file chunk */
   fop_ret =
-      read(fp, elem->memory_buffer, (size_t)1);
+      fread(elem->memory_buffer, (size_t)1, iotc_bsp_io_fs_buffer_size, fp);
 
   /* if error on fread check errno */
   IOTC_BSP_IO_FS_CHECK_CND(
@@ -261,7 +261,7 @@ iotc_bsp_io_fs_state_t iotc_bsp_io_fs_write(
   }
 
   iotc_bsp_io_fs_state_t ret = IOTC_BSP_IO_FS_STATE_OK;
-  int fp = (int)resource_handle;
+  FILE* fp = (FILE*)resource_handle;
 
   iotc_bsp_io_fs_posix_file_handle_container_t* elem = NULL;
   IOTC_LIST_FIND(iotc_bsp_io_fs_posix_file_handle_container_t,
@@ -272,19 +272,19 @@ iotc_bsp_io_fs_state_t iotc_bsp_io_fs_write(
                            ret);
 
   /* let's set the offset */
-  const int fop_ret = lseek(fp, offset, SEEK_SET);
+  const int fop_ret = fseek(fp, offset, SEEK_SET);
 
-  /* if error on lseek check errno */
+  /* if error on fseek check errno */
   IOTC_BSP_IO_FS_CHECK_CND(
       fop_ret != 0, iotc_bsp_io_fs_posix_errno_2_iotc_bsp_io_fs_state(errno),
       ret);
 
-  *bytes_written = write(fp, buffer, (size_t)1);
+  *bytes_written = fwrite(buffer, (size_t)1, buffer_size, fp);
 
   /* if error on fwrite check errno */
   IOTC_BSP_IO_FS_CHECK_CND(
       buffer_size != *bytes_written,
-      iotc_bsp_io_fs_posix_errno_2_iotc_bsp_io_fs_state(errno), ret);
+      iotc_bsp_io_fs_posix_errno_2_iotc_bsp_io_fs_state(ferror(fp)), ret);
 
 err_handling:
 
@@ -298,7 +298,7 @@ iotc_bsp_io_fs_state_t iotc_bsp_io_fs_close(
   }
 
   iotc_bsp_io_fs_state_t ret = IOTC_BSP_IO_FS_STATE_OK;
-  int fp = (int)resource_handle;
+  FILE* fp = (FILE*)resource_handle;
   iotc_bsp_io_fs_posix_file_handle_container_t* elem = NULL;
   int fop_ret = 0;
 
@@ -314,9 +314,9 @@ iotc_bsp_io_fs_state_t iotc_bsp_io_fs_close(
   IOTC_LIST_DROP(iotc_bsp_io_fs_posix_file_handle_container_t,
                  iotc_bsp_io_fs_posix_files_container, elem);
 
-  fop_ret = close(fp);
+  fop_ret = fclose(fp);
 
-  /* if error on close check errno */
+  /* if error on fclose check errno */
   IOTC_BSP_IO_FS_CHECK_CND(
       0 != fop_ret, iotc_bsp_io_fs_posix_errno_2_iotc_bsp_io_fs_state(errno),
       ret);
@@ -336,6 +336,12 @@ err_handling:
 }
 
 iotc_bsp_io_fs_state_t iotc_bsp_io_fs_remove(const char* const resource_name) {
-  return IOTC_BSP_IO_FS_NOT_IMPLEMENTED;
-}
+  int ret = remove(resource_name);
 
+  IOTC_BSP_IO_FS_CHECK_CND(
+      0 != ret, iotc_bsp_io_fs_posix_errno_2_iotc_bsp_io_fs_state(errno), ret);
+
+err_handling:
+
+  return ret;
+}

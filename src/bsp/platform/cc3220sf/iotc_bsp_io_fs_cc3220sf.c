@@ -312,7 +312,7 @@ iotc_bsp_io_fs_state_t iotc_bsp_io_fs_remove(const char* const resource_name) {
     iotc_bsp_debug_format( " Deleting file: [ %s ]", resource_name );
 
     /* prevent possible firmware file deletion */
-    if ( 1 == IOTC_bsp_io_fs_is_this_cc3220sf_firmware_filename( resource_name ) )
+    if ( 1 == iotc_bsp_io_fs_is_this_cc3220sf_firmware_filename( resource_name ) )
     {
         return IOTC_BSP_IO_FS_REMOVE_ERROR;
     }

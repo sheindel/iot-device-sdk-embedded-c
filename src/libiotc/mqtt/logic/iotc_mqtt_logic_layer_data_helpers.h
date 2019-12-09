@@ -17,6 +17,7 @@
 #ifndef __IOTC_MQTT_LOGIC_LAYER_DATA_HELPERS_H__
 #define __IOTC_MQTT_LOGIC_LAYER_DATA_HELPERS_H__
 
+#include "iotc_macros.h"
 #include "iotc_mqtt_logic_layer_data.h"
 #include "iotc_mqtt_message.h"
 #include "string.h"
@@ -26,7 +27,11 @@ extern "C" {
 #endif
 
 static inline int8_t match_topics(const union iotc_vector_selector_u* a,
-                                const union iotc_vector_selector_u* b) {
+                                  const union iotc_vector_selector_u* b) {
+  if (NULL == a || NULL == b) {
+    return 1;
+  }
+
   const iotc_mqtt_task_specific_data_t* ca =
       (const iotc_mqtt_task_specific_data_t*)
           a->ptr_value; /* This is supposed to be the one from the vector. */
@@ -34,36 +39,50 @@ static inline int8_t match_topics(const union iotc_vector_selector_u* a,
       (const iotc_data_desc_t*)b->ptr_value; /* This is supposed to be the one
                                                 from the msg. */
 
-  // check if we have a wildcard in our subscription
-  uint8_t subscription_length = strlen(ca->subscribe.topic);
-  if (subscription_length == 0) {
-    // bail out in case we have an empty string at this point
+  if (NULL == ca || NULL == cb || NULL == ca->subscribe.topic ||
+      NULL == cb->data_ptr) {
     return 1;
   }
 
-  char last_token = ca->subscribe.topic[subscription_length-1];
-  // since MQTT only allows the last character of a topic to be a wildcard, we 
-  // can check the last character and if a wildcard, only compare up the
-  // character before the /#
-  if (last_token == '#') {
-    if (subscription_length == 1) {
-      return 0; // we are matching all topics with root wildcard '#'
-    } else if (memcmp(ca->subscribe.topic, 
-              cb->data_ptr, 
-              subscription_length-2) == 0) {
-      return 0;
-    }
-  } else { // subscription is NOT any kind of wildcard
-    uint8_t published_topic_length = cb->length;
-    // do fast length check first
-    if (published_topic_length != subscription_length) {
-      return 1;
-    // if incoming topic and subscription are the same length, perform memcmp
-    } else if (memcmp(ca->subscribe.topic, cb->data_ptr, published_topic_length) == 0) {
-      return 0;
-    }
+  // check if we have a wildcard in our subscription
+  const uint8_t subscription_length = strlen(ca->subscribe.topic);
+  if (subscription_length == 0) {
+    return 1;
   }
 
+  const uint8_t published_topic_length = cb->length;
+  if (published_topic_length == 0) {
+    return 1;
+  }
+
+  const char last_sub_token = ca->subscribe.topic[subscription_length - 1];
+
+  // first deal with non-wildcard subscriptions. Must be exact
+  if ('#' != last_sub_token) {
+    // we can bail out if our topics aren't exactly the same length
+    if (published_topic_length != subscription_length) return 1;
+
+    return memcmp(ca->subscribe.topic, cb->data_ptr, published_topic_length)
+               ? 1
+               : 0;
+  } else {
+    // handle the wildcard subscriptions
+    if (subscription_length == 1) {
+      return 0;
+    }
+
+    if ((subscription_length - 1) <= published_topic_length) {
+      // if the published topic has something in the wildcard position
+      return memcmp(ca->subscribe.topic, cb->data_ptr, subscription_length - 1)
+                 ? 1
+                 : 0;
+    } else if ((subscription_length - 2) == published_topic_length) {
+      // match the parent topic, e.g. pear/banana/#, pear/banana
+      return memcmp(ca->subscribe.topic, cb->data_ptr, subscription_length - 2)
+                 ? 1
+                 : 0;
+    }
+  }
   return 1;
 }
 

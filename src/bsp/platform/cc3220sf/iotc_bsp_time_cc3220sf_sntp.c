@@ -197,7 +197,7 @@ static uint32_t dns_lookup( char* host_name )
     int status;
     uint32_t rval;
 
-    if ( ( status = sl_NetAppDnsGetHostByName( ( _i8* )host_name, strlen( host_name ),
+    if ( ( status = sl_NetAppDnsGetHostByName( ( _i8* )host_name, strlen( host_name ) + 1,
                                                ( _u32* )&rval, SL_AF_INET ) ) == 0 )
     {
         status = SNTP_OK;

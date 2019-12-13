@@ -234,7 +234,7 @@ IOTC_SOURCES_CXX := $(wildcard ./src/*.cc)
 IOTC_SOURCES_CXX += $(foreach layerdir,$(IOTC_SRCDIRS),\
 	$(wildcard $(layerdir)/*.cc))
 
-# TODO this isn't working on Windows as IOTC_GTEST_SOURCES is not set correctly, so we will revert to the old filter logic for now
+# TODO this isn't working on Windows as IOTC_GTEST_SOURCES is not set correctly, so we will revert to the old filter logic for now	
 IOTC_SOURCES_CXX := $(filter-out $(IOTC_GTEST_SOURCES), $(IOTC_SOURCES_CXX)) # Filter out tests
 
 ifeq ($(IOTC_DEBUG_OUTPUT),0)

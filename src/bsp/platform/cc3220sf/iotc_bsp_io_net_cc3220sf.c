@@ -202,9 +202,7 @@ iotc_bsp_io_net_state_t iotc_bsp_io_net_socket_connect(
     iotc_bsp_socket_t* iotc_socket, const char* host, uint16_t port,
     iotc_bsp_socket_type_t socket_type) {
 
-    iotc_bsp_io_net_state_t bsp_state = IOTC_BSP_IO_NET_STATE_OK;
-
- // GN: e.g. ... from _io_net_layer.c
+  iotc_bsp_io_net_state_t bsp_state = IOTC_BSP_IO_NET_STATE_OK;
 
   bsp_state = iotc_bsp_io_net_create_socket(iotc_socket);
 
@@ -359,7 +357,7 @@ iotc_bsp_io_net_state_t iotc_bsp_io_net_select(
     /* calculate max fd */
     const int max_fd = MAX( max_fd_read, MAX( max_fd_write, max_fd_error ) );
 
-    tv.tv_sec = 1;
+    tv.tv_sec = timeout_sec;
 
     /* call the actual posix select */
     const int result = sl_Select( max_fd + 1, &rfds, &wfds, &efds, &tv );

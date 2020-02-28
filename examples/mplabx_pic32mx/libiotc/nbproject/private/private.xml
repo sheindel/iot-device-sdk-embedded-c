@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/workspace/iot-device-sdk-embedded-c/src/libiotc/io/fs/iotc_fs_bsp_to_iotc_mapping.c</file>
+            <file>file:/C:/workspace/iot-device-sdk-embedded-c/src/libiotc/io/fs/memory/iotc_fs_memory.c</file>
+            <file>file:/C:/workspace/iot-device-sdk-embedded-c/src/libiotc/io/fs/dummy/iotc_fs_dummy.c</file>
+            <file>file:/C:/workspace/iot-device-sdk-embedded-c/src/libiotc/io/fs/iotc_fs_filenames.c</file>
+        </group>
+    </open-files>
+</project-private>

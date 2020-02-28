@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="65">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="LinkerScript"
+                   displayName="Linker Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>../../../src/libiotc/iotc.c</itemPath>
+      <itemPath>../../../src/libiotc/iotc_backoff_status_api.c</itemPath>
+      <itemPath>../../../src/libiotc/iotc_connection_data.c</itemPath>
+      <itemPath>../../../src/libiotc/iotc_data_desc.c</itemPath>
+      <itemPath>../../../src/libiotc/iotc_debug.c</itemPath>
+      <itemPath>../../../src/libiotc/iotc_error.c</itemPath>
+      <itemPath>../../../src/libiotc/iotc_globals.c</itemPath>
+      <itemPath>../../../src/libiotc/iotc_handle.c</itemPath>
+      <itemPath>../../../src/libiotc/iotc_helpers.c</itemPath>
+      <itemPath>../../../src/libiotc/iotc_internals.c</itemPath>
+      <itemPath>../../../src/libiotc/iotc_io_timeouts.c</itemPath>
+      <itemPath>../../../src/libiotc/iotc_jwt.c</itemPath>
+      <itemPath>../../../src/libiotc/iotc_layer_api.c</itemPath>
+      <itemPath>../../../src/libiotc/iotc_layer_default_allocators.c</itemPath>
+      <itemPath>../../../src/libiotc/iotc_layer_default_functions.c</itemPath>
+      <itemPath>../../../src/libiotc/iotc_timed_task.c</itemPath>
+      <itemPath>../../../src/libiotc/iotc_tuples.c</itemPath>
+      <itemPath>../../../src/libiotc/iotc_user_sub_call_wrapper.c</itemPath>
+      <itemPath>../../../src/bsp/crypto/wolfssl/iotc_bsp_crypto_wolfssl.c</itemPath>
+      <itemPath>../../../src/bsp/platform/dummy/iotc_bsp_crypto.c</itemPath>
+      <itemPath>../../../src/bsp/platform/dummy/iotc_bsp_io_fs_dummy.c</itemPath>
+      <itemPath>../../../src/bsp/platform/dummy/iotc_bsp_io_net_dummy.c</itemPath>
+      <itemPath>../../../src/bsp/platform/dummy/iotc_bsp_mem_dummy.c</itemPath>
+      <itemPath>../../../src/bsp/platform/dummy/iotc_bsp_rng_dummy.c</itemPath>
+      <itemPath>../../../src/bsp/platform/dummy/iotc_bsp_time_dummy.c</itemPath>
+      <itemPath>../../../src/bsp/tls/wolfssl/iotc_bsp_tls_wolfssl.c</itemPath>
+      <itemPath>../../../src/libiotc/event_dispatcher/iotc_event_dispatcher.c</itemPath>
+      <itemPath>../../../src/libiotc/event_dispatcher/iotc_event_handle.c</itemPath>
+      <itemPath>../../../src/libiotc/event_dispatcher/iotc_event_thread_dispatcher.c</itemPath>
+      <itemPath>../../../src/libiotc/event_dispatcher/iotc_time_event.c</itemPath>
+      <itemPath>../../../src/libiotc/control_topic/iotc_control_topic_layer.c</itemPath>
+      <itemPath>../../../src/libiotc/datastructures/iotc_vector.c</itemPath>
+      <itemPath>../../../src/libiotc/event_loop/iotc_event_loop.c</itemPath>
+      <itemPath>../../../src/libiotc/io/fs/iotc_fs_bsp_to_iotc_mapping.c</itemPath>
+      <itemPath>../../../src/libiotc/io/fs/iotc_fs_filenames.c</itemPath>
+      <itemPath>../../../src/libiotc/io/fs/iotc_resource_manager.c</itemPath>
+      <itemPath>../../../src/libiotc/io/fs/dummy/iotc_fs_dummy.c</itemPath>
+      <itemPath>../../../src/libiotc/io/fs/memory/iotc_fs_memory.c</itemPath>
+      <itemPath>../../../src/libiotc/io/net/iotc_io_net_layer.c</itemPath>
+      <itemPath>../../../src/libiotc/memory/iotc_allocator.c</itemPath>
+      <itemPath>../../../src/libiotc/mqtt/codec/iotc_mqtt_codec_layer.c</itemPath>
+      <itemPath>../../../src/libiotc/mqtt/codec/iotc_mqtt_codec_layer_data.c</itemPath>
+      <itemPath>../../../src/libiotc/mqtt/logic/iotc_mqtt_logic_layer.c</itemPath>
+      <itemPath>../../../src/libiotc/mqtt/logic/iotc_mqtt_logic_layer_data.c</itemPath>
+      <itemPath>../../../src/libiotc/mqtt/logic/iotc_mqtt_logic_layer_keepalive_handler.c</itemPath>
+      <itemPath>../../../src/libiotc/mqtt/logic/iotc_mqtt_logic_layer_task_helpers.c</itemPath>
+      <itemPath>../../../src/libiotc/tls/iotc_tls_layer.c</itemPath>
+      <itemPath>../../../src/libiotc/tls/certs/iotc_RootCA_list.c</itemPath>
+      <itemPath>../../../third_party/mqtt-protocol-c/iotc_debug_data_desc_dump.c</itemPath>
+      <itemPath>../../../third_party/mqtt-protocol-c/iotc_mqtt_message.c</itemPath>
+      <itemPath>../../../third_party/mqtt-protocol-c/iotc_mqtt_parser.c</itemPath>
+      <itemPath>../../../third_party/mqtt-protocol-c/iotc_mqtt_serialiser.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>../../../src/libiotc/event_dispatcher</Elem>
+    <Elem>../../../src/libiotc/control_topic</Elem>
+    <Elem>../../../src/libiotc/datastructures</Elem>
+    <Elem>../../../src/libiotc/event_loop</Elem>
+    <Elem>../../../src/libiotc/io/fs</Elem>
+    <Elem>../../../src/libiotc/io/net</Elem>
+    <Elem>../../../src/libiotc/memory</Elem>
+    <Elem>../../../src/libiotc/mqtt/codec</Elem>
+    <Elem>../../../src/libiotc/mqtt/logic</Elem>
+    <Elem>../../../src/libiotc/tls</Elem>
+    <Elem>../../../third_party/mqtt-protocol-c</Elem>
+    <Elem>../../../include/bsp</Elem>
+    <Elem>../../../include</Elem>
+    <Elem>../../../src/libiotc</Elem>
+    <Elem>../../../src/bsp/crypto/mbedtls</Elem>
+    <Elem>../../../src/libiotc/io/fs/posix</Elem>
+    <Elem>../../../src/bsp</Elem>
+    <Elem>../../../src/bsp/platform/freertos-posix-xc32</Elem>
+    <Elem>../../../src/libiotc/time</Elem>
+    <Elem>../../../src/libiotc/tls/certs</Elem>
+    <Elem>../../../src/bsp/tls/mbedtls</Elem>
+    <Elem>../../../src/libiotc/io</Elem>
+    <Elem>../../../src/libiotc/platform/posix</Elem>
+    <Elem>../../../src/libiotc/platform/posix/iotc_thread</Elem>
+    <Elem>../../../third_party/FreeRTOSv10.1.1/FreeRTOS/Source/include</Elem>
+    <Elem>../../../third_party/freertos-addons/Linux/portable/GCC/Linux</Elem>
+    <Elem>../../../examples/freertos_linux/Linux_gcc_gcp_iot</Elem>
+    <Elem>../../../third_party/cmocka/include/</Elem>
+    <Elem>../../../third_party/tls/mbedtls/include/</Elem>
+    <Elem>../../../third_party/tls/wolfssl</Elem>
+    <Elem>../../../src/tests</Elem>
+    <Elem>../../../src/tests/tools</Elem>
+    <Elem>../../../src/tests/itests</Elem>
+    <Elem>../../../src/tests/itests/tools</Elem>
+    <Elem>../../../src/tests/itests/tools/dummy</Elem>
+    <Elem>../../../src/tests/itests/platform/posix/iotc_thread</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="default" type="3">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <targetDevice>PIC32MX795F512L</targetDevice>
+        <targetHeader></targetHeader>
+        <targetPluginBoard></targetPluginBoard>
+        <platformTool>SKDEPIC32PlatformTool</platformTool>
+        <languageToolchain>XC32</languageToolchain>
+        <languageToolchainVersion>1.40</languageToolchainVersion>
+        <platform>3</platform>
+      </toolsSet>
+      <packs>
+        <pack name="PIC32MX_DFP" vendor="Microchip" version="1.0.28"/>
+      </packs>
+      <compileType>
+        <linkerTool>
+          <linkerLibItems>
+          </linkerLibItems>
+        </linkerTool>
+        <archiverTool>
+        </archiverTool>
+        <loading>
+          <useAlternateLoadableFile>false</useAlternateLoadableFile>
+          <parseOnProdLoad>false</parseOnProdLoad>
+          <alternateLoadableFile></alternateLoadableFile>
+        </loading>
+        <subordinates>
+        </subordinates>
+      </compileType>
+      <makeCustomizationType>
+        <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
+        <makeCustomizationPreStep></makeCustomizationPreStep>
+        <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
+        <makeCustomizationPostStep></makeCustomizationPostStep>
+        <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
+        <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
+        <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
+      </makeCustomizationType>
+      <C32>
+        <property key="additional-warnings" value="false"/>
+        <property key="addresss-attribute-use" value="false"/>
+        <property key="enable-app-io" value="false"/>
+        <property key="enable-omit-frame-pointer" value="false"/>
+        <property key="enable-symbols" value="true"/>
+        <property key="enable-unroll-loops" value="false"/>
+        <property key="exclude-floating-point" value="false"/>
+        <property key="extra-include-directories" value=""/>
+        <property key="generate-16-bit-code" value="false"/>
+        <property key="generate-micro-compressed-code" value="false"/>
+        <property key="isolate-each-function" value="false"/>
+        <property key="make-warnings-into-errors" value="false"/>
+        <property key="optimization-level" value=""/>
+        <property key="place-data-into-section" value="false"/>
+        <property key="post-instruction-scheduling" value="default"/>
+        <property key="pre-instruction-scheduling" value="default"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="strict-ansi" value="false"/>
+        <property key="support-ansi" value="false"/>
+        <property key="toplevel-reordering" value=""/>
+        <property key="unaligned-access" value=""/>
+        <property key="use-cci" value="false"/>
+        <property key="use-iar" value="false"/>
+        <property key="use-indirect-calls" value="false"/>
+      </C32>
+      <C32-AR>
+        <property key="additional-options-chop-files" value="false"/>
+      </C32-AR>
+      <C32-AS>
+        <property key="assembler-symbols" value=""/>
+        <property key="enable-symbols" value="true"/>
+        <property key="exclude-floating-point-library" value="false"/>
+        <property key="expand-macros" value="false"/>
+        <property key="extra-include-directories-for-assembler" value=""/>
+        <property key="extra-include-directories-for-preprocessor" value=""/>
+        <property key="false-conditionals" value="false"/>
+        <property key="generate-16-bit-code" value="false"/>
+        <property key="generate-micro-compressed-code" value="false"/>
+        <property key="keep-locals" value="false"/>
+        <property key="list-assembly" value="false"/>
+        <property key="list-source" value="false"/>
+        <property key="list-symbols" value="false"/>
+        <property key="oXC32asm-list-to-file" value="false"/>
+        <property key="omit-debug-dirs" value="false"/>
+        <property key="omit-forms" value="false"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="warning-level" value=""/>
+      </C32-AS>
+      <C32-LD>
+        <property key="additional-options-use-response-files" value="false"/>
+        <property key="additional-options-write-sla" value="false"/>
+        <property key="allocate-dinit" value="false"/>
+        <property key="code-dinit" value="false"/>
+        <property key="ebase-addr" value=""/>
+        <property key="enable-check-sections" value="false"/>
+        <property key="exclude-floating-point-library" value="false"/>
+        <property key="exclude-standard-libraries" value="false"/>
+        <property key="extra-lib-directories" value=""/>
+        <property key="fill-flash-options-addr" value=""/>
+        <property key="fill-flash-options-const" value=""/>
+        <property key="fill-flash-options-how" value="0"/>
+        <property key="fill-flash-options-inc-const" value="1"/>
+        <property key="fill-flash-options-increment" value=""/>
+        <property key="fill-flash-options-seq" value=""/>
+        <property key="fill-flash-options-what" value="0"/>
+        <property key="generate-16-bit-code" value="false"/>
+        <property key="generate-cross-reference-file" value="false"/>
+        <property key="generate-micro-compressed-code" value="false"/>
+        <property key="heap-size" value=""/>
+        <property key="input-libraries" value=""/>
+        <property key="kseg-length" value=""/>
+        <property key="kseg-origin" value=""/>
+        <property key="linker-symbols" value=""/>
+        <property key="map-file" value="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map"/>
+        <property key="no-device-startup-code" value="false"/>
+        <property key="no-startup-files" value="false"/>
+        <property key="oXC32ld-extra-opts" value=""/>
+        <property key="optimization-level" value=""/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="remove-unused-sections" value="false"/>
+        <property key="report-memory-usage" value="false"/>
+        <property key="serial-length" value=""/>
+        <property key="serial-origin" value=""/>
+        <property key="stack-size" value=""/>
+        <property key="symbol-stripping" value=""/>
+        <property key="trace-symbols" value=""/>
+        <property key="warn-section-align" value="false"/>
+      </C32-LD>
+      <C32CPP>
+        <property key="additional-warnings" value="false"/>
+        <property key="addresss-attribute-use" value="false"/>
+        <property key="check-new" value="false"/>
+        <property key="eh-specs" value="true"/>
+        <property key="enable-app-io" value="false"/>
+        <property key="enable-omit-frame-pointer" value="false"/>
+        <property key="enable-symbols" value="true"/>
+        <property key="enable-unroll-loops" value="false"/>
+        <property key="exceptions" value="true"/>
+        <property key="exclude-floating-point" value="false"/>
+        <property key="extra-include-directories" value=""/>
+        <property key="generate-16-bit-code" value="false"/>
+        <property key="generate-micro-compressed-code" value="false"/>
+        <property key="isolate-each-function" value="false"/>
+        <property key="make-warnings-into-errors" value="false"/>
+        <property key="optimization-level" value=""/>
+        <property key="place-data-into-section" value="false"/>
+        <property key="post-instruction-scheduling" value="default"/>
+        <property key="pre-instruction-scheduling" value="default"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="rtti" value="true"/>
+        <property key="strict-ansi" value="false"/>
+        <property key="toplevel-reordering" value=""/>
+        <property key="unaligned-access" value=""/>
+        <property key="use-cci" value="false"/>
+        <property key="use-iar" value="false"/>
+        <property key="use-indirect-calls" value="false"/>
+      </C32CPP>
+      <C32Global>
+        <property key="common-include-directories"
+                  value="..\..\..\..\wolfssl;..\..\src\libiotc\event_dispatcher;..\..\..\third_party\tls\mbedtls\include\;..\..\..\include\bsp;..\..\..\src\libiotc\platform\iotc_thread ;..\..\..\include;..\..\..\src\libiotc ;..\..\..\src\bsp\crypto\mbedtls ;..\..\..\src\libiotc\io\fs\posix ;..\..\..\src\bsp ;..\..\..\src\bsp\platform\freertos-posix-xc32 ;..\..\..\src\libiotc\io\net ;..\..\..\src\libiotc\memory ;..\..\..\src\libiotc\event_loop ;..\..\..\src\libiotc\time ;..\..\..\src\libiotc\tls\certs ;..\..\..\src\libiotc\tls ;..\..\..\src\bsp\tls\mbedtls ;..\..\..\src\libiotc ;..\..\..\src\libiotc\io ;..\..\..\src\libiotc\io\fs ;..\..\..\src\libiotc\event_dispatcher ;..\..\..\src\libiotc\datastructures ;..\..\..\src\libiotc\mqtt\codec ;..\..\..\src\libiotc\mqtt\logic ;..\..\..\src\libiotc\control_topic ;..\..\..\third_party\mqtt-protocol-c;..\..\..\src\libiotc\platform\posix;..\..\..\src\libiotc\platform\posix\iotc_thread;..\..\..\third_party\FreeRTOSv10.1.1\FreeRTOS\Source\include;..\..\..\third_party\freertos-addons\Linux\portable\GCC\Linux;..\..\..\examples\freertos_linux\Linux_gcc_gcp_iot;..\..\..\third_party\cmocka\include\;..\..\..\src\tests;..\..\..\src\tests\tools;..\..\..\src\tests\itests;..\..\..\src\tests\itests\tools;..\..\..\src\tests\itests\tools\dummy;..\..\..\src\libiotc;..\..\..\src\tests\itests\platform\posix\iotc_thread"/>
+        <property key="gp-relative-option" value=""/>
+        <property key="legacy-libc" value="true"/>
+        <property key="mdtcm" value=""/>
+        <property key="mitcm" value=""/>
+        <property key="mstacktcm" value="false"/>
+        <property key="relaxed-math" value="false"/>
+        <property key="save-temps" value="false"/>
+        <property key="wpo-lto" value="false"/>
+        <appendMe value="-DIOTC_FS_DUMMY -DWOLFSSL_USER_SETTINGS -IC:\workspace\wolfssl\mplabx -DIOTC_TLS_OCSP_STAPLING -DTLSLIB_WOLFSSL"/>
+      </C32Global>
+      <SKDEPIC32PlatformTool>
+        <property key="whatToProgram" value="all"/>
+      </SKDEPIC32PlatformTool>
+    </conf>
+  </confs>
+</configurationDescriptor>

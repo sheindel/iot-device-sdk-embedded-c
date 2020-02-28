@@ -12,7 +12,7 @@ Device SDK for Embedded C GitHub
 repository](https://github.com/GoogleCloudPlatform/iot-device-sdk-embedded-c.git):
 
 ```
-git clone https://github.com/GoogleCloudPlatform/iot-device-sdk-embedded-c.git
+git clone https://github.com/GoogleCloudPlatform/iot-device-sdk-embedded-c.git --recurse-submodules
 ```
 
 ### Directory structure
@@ -136,7 +136,7 @@ Review the following documentation:
 
 ## License
 
-Copyright 2018-2019 Google LLC
+Copyright 2018-2020 Google LLC
 
 Licensed under the BSD 3-Clause license.
 

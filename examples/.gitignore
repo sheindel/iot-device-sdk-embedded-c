@@ -3,3 +3,6 @@ freertos_linux/Linux_gcc_gcp_iot/roots.pem
 freertos_linux/Linux_gcc_gcp_iot/Linux_gcc_gcp_iot
 
 zephyr_native_posix/build/
+
+mplabx_pic32mx/libiotc/build
+mplabx_pic32mx/libiotc/dist

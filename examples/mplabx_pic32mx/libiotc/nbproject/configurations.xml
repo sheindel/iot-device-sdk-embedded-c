@@ -269,7 +269,7 @@
       </C32CPP>
       <C32Global>
         <property key="common-include-directories"
-                  value="..\..\..\..\wolfssl;..\..\src\libiotc\event_dispatcher;..\..\..\third_party\tls\mbedtls\include\;..\..\..\include\bsp;..\..\..\src\libiotc\platform\iotc_thread ;..\..\..\include;..\..\..\src\libiotc ;..\..\..\src\bsp\crypto\mbedtls ;..\..\..\src\libiotc\io\fs\posix ;..\..\..\src\bsp ;..\..\..\src\bsp\platform\freertos-posix-xc32 ;..\..\..\src\libiotc\io\net ;..\..\..\src\libiotc\memory ;..\..\..\src\libiotc\event_loop ;..\..\..\src\libiotc\time ;..\..\..\src\libiotc\tls\certs ;..\..\..\src\libiotc\tls ;..\..\..\src\bsp\tls\mbedtls ;..\..\..\src\libiotc ;..\..\..\src\libiotc\io ;..\..\..\src\libiotc\io\fs ;..\..\..\src\libiotc\event_dispatcher ;..\..\..\src\libiotc\datastructures ;..\..\..\src\libiotc\mqtt\codec ;..\..\..\src\libiotc\mqtt\logic ;..\..\..\src\libiotc\control_topic ;..\..\..\third_party\mqtt-protocol-c;..\..\..\src\libiotc\platform\posix;..\..\..\src\libiotc\platform\posix\iotc_thread;..\..\..\third_party\FreeRTOSv10.1.1\FreeRTOS\Source\include;..\..\..\third_party\freertos-addons\Linux\portable\GCC\Linux;..\..\..\examples\freertos_linux\Linux_gcc_gcp_iot;..\..\..\third_party\cmocka\include\;..\..\..\src\tests;..\..\..\src\tests\tools;..\..\..\src\tests\itests;..\..\..\src\tests\itests\tools;..\..\..\src\tests\itests\tools\dummy;..\..\..\src\libiotc;..\..\..\src\tests\itests\platform\posix\iotc_thread"/>
+                  value="..\..\..\..\wolfssl;..\..\src\libiotc\event_dispatcher;..\..\..\third_party\tls\mbedtls\include\;..\..\..\include\bsp;..\..\..\src\libiotc\platform\iotc_thread ;..\..\..\include;..\..\..\src\libiotc ;..\..\..\src\bsp\crypto\mbedtls ;..\..\..\src\libiotc\io\fs\posix ;..\..\..\src\bsp ;..\..\..\src\bsp\platform\freertos-posix-xc32 ;..\..\..\src\libiotc\io\net ;..\..\..\src\libiotc\memory ;..\..\..\src\libiotc\event_loop ;..\..\..\src\libiotc\time ;..\..\..\src\libiotc\tls\certs ;..\..\..\src\libiotc\tls ;..\..\..\src\bsp\tls\mbedtls ;..\..\..\src\libiotc ;..\..\..\src\libiotc\io ;..\..\..\src\libiotc\io\fs ;..\..\..\src\libiotc\event_dispatcher ;..\..\..\src\libiotc\datastructures ;..\..\..\src\libiotc\mqtt\codec ;..\..\..\src\libiotc\mqtt\logic ;..\..\..\src\libiotc\control_topic ;..\..\..\third_party\mqtt-protocol-c;..\..\..\src\libiotc\platform\posix;..\..\..\src\libiotc\platform\posix\iotc_thread;..\..\..\third_party\FreeRTOSv10.1.1\FreeRTOS\Source\include;..\..\..\third_party\freertos-addons\Linux\portable\GCC\Linux;..\..\..\examples\freertos_linux\Linux_gcc_gcp_iot;..\..\..\third_party\cmocka\include\;..\..\..\src\tests;..\..\..\src\tests\tools;..\..\..\src\tests\itests;..\..\..\src\tests\itests\tools;..\..\..\src\tests\itests\tools\dummy;..\..\..\src\libiotc;..\..\..\src\tests\itests\platform\posix\iotc_thread;..\..\..\..\wolfssl\mplabx"/>
         <property key="gp-relative-option" value=""/>
         <property key="legacy-libc" value="true"/>
         <property key="mdtcm" value=""/>
@@ -278,7 +278,7 @@
         <property key="relaxed-math" value="false"/>
         <property key="save-temps" value="false"/>
         <property key="wpo-lto" value="false"/>
-        <appendMe value="-DIOTC_FS_DUMMY -DWOLFSSL_USER_SETTINGS -IC:\workspace\wolfssl\mplabx -DIOTC_TLS_OCSP_STAPLING -DTLSLIB_WOLFSSL"/>
+        <appendMe value="-DIOTC_FS_DUMMY -DWOLFSSL_USER_SETTINGS -DIOTC_TLS_OCSP_STAPLING -DTLSLIB_WOLFSSL"/>
       </C32Global>
       <SKDEPIC32PlatformTool>
         <property key="whatToProgram" value="all"/>
